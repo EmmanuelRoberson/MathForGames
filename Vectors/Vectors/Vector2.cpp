@@ -53,6 +53,6 @@ bool Vector2::operator==(Vector2& rhs)
 
 bool Vector2::operator!=(Vector2& rhs)
 {
-	return (xPos != rhs.xPos &&
+	return (xPos != rhs.xPos ||
 			yPos != rhs.yPos);
 }
