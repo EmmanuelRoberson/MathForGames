@@ -30,6 +30,9 @@ public:
 	//normalizes this vector3
 	Vector3 Normalize();
 
+	//Distance bewteen two points
+	float Distance(Vector3 other);
+
 private:
 
 	//x position, y position, and z position

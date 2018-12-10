@@ -82,3 +82,9 @@ Vector3 Vector3::Normalize()
 
 	return *this;
 }
+
+float Vector3::Distance(Vector3 other)
+{
+	Vector3 temp = Vector3(xPos - other.xPos, yPos - other.yPos, zPos - other.zPos);
+	return temp.Magnitude();
+}

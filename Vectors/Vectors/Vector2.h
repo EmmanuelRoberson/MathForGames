@@ -29,6 +29,9 @@ public:
 	//normalizes this Vector2
 	Vector2 Normalize();
 
+	//distance between two points
+	float Distance(Vector2 other);
+
 private:
 
 	//x position and y position

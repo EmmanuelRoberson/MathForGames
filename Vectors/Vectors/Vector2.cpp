@@ -24,18 +24,14 @@ float Vector2::GetY()
 
 Vector2 Vector2::operator+(Vector2 & rhs)
 {
-	xPos += rhs.xPos;
-	yPos += rhs.yPos;
-
+	Vector2 temp = Vector2(xPos + rhs.xPos, yPos + rhs.yPos);
 	return *this;
 }
 
 Vector2 Vector2::operator-(Vector2 & rhs)
 {
-	xPos -= rhs.xPos;
-	yPos -= rhs.yPos;
-
-	return *this;
+	Vector2 temp = Vector2(xPos - rhs.xPos, yPos - rhs.yPos);
+	return temp;
 }
 
 Vector2 Vector2::operator*(float& rhs)
@@ -70,4 +66,9 @@ Vector2 Vector2::Normalize()
 	yPos /= mag;
 
 	return *this;
+}
+
+float Vector2::Distance(Vector2 other)
+{
+	return (*this - other).Magnitude();
 }

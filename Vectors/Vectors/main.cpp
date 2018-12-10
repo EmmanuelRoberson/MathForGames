@@ -12,4 +12,6 @@ int main()
 
 	Vector3 test_vec3_1 = Vector3(1.0, 1.0, 1.0);
 	test_vec3_1.Normalize();
+
+
 }
