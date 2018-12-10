@@ -23,6 +23,12 @@ public:
 	bool operator == (Vector2& rhs);
 	bool operator != (Vector2& rhs);
 
+	//returns the magnitude of this Vector2
+	float Magnitude();
+
+	//normalizes this Vector2
+	Vector2 Normalize();
+
 private:
 
 	//x position and y position

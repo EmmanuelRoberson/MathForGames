@@ -1,4 +1,5 @@
 #include "Vector2.h"
+#include "cmath"
 
 Vector2::Vector2()
 {
@@ -55,4 +56,18 @@ bool Vector2::operator!=(Vector2& rhs)
 {
 	return (xPos != rhs.xPos ||
 			yPos != rhs.yPos);
+}
+
+float Vector2::Magnitude()
+{
+	return sqrt((xPos*xPos) + (yPos*yPos));
+}
+
+Vector2 Vector2::Normalize()
+{
+	float mag = Magnitude();
+	xPos /= mag;
+	yPos /= mag;
+
+	return *this;
 }

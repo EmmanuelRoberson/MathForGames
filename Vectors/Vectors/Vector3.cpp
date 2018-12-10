@@ -67,3 +67,18 @@ bool Vector3::operator!=(Vector3& rhs)
 			yPos != rhs.yPos ||
 			zPos != rhs.zPos);
 }
+
+float Vector3::Magnitude()
+{
+	return sqrt((xPos*xPos) + (yPos*yPos) + (zPos*zPos));
+}
+
+Vector3 Vector3::Normalize()
+{
+	float mag = Magnitude();
+	xPos /= mag;
+	yPos /= mag;
+	zPos /= mag;
+
+	return *this;
+}
