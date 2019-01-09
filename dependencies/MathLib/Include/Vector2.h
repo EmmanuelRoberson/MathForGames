@@ -32,6 +32,9 @@ public:
 	//distance between two points
 	float Distance(Vector2 other);
 
+	//dot product
+	float DotProduct(Vector2 other);
+
 private:
 
 	//x position and y position

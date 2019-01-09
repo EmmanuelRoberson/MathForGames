@@ -88,3 +88,30 @@ float Vector3::Distance(Vector3 other)
 	Vector3 temp = Vector3(xPos - other.xPos, yPos - other.yPos, zPos - other.zPos);
 	return temp.Magnitude();
 }
+
+float Vector3::DotProduct(Vector3 other)
+{
+	return (xPos * other.xPos + yPos * other.yPos + zPos * other.zPos);
+}
+
+Vector3 Vector3::CrossProduct(Vector3 other)
+{
+	return Vector3(yPos * other.zPos - zPos * other.yPos,
+				   zPos * other.xPos - xPos * other.zPos,
+				   xPos * other.yPos - yPos * other.xPos);
+}
+
+float Vector3::operator[](int index)
+{
+	switch (index)
+	{
+	case 0:
+		return xPos;
+	case 1:
+		return yPos;
+	case 2:
+		return zPos;
+	default:
+		return 0.0;
+	}
+}

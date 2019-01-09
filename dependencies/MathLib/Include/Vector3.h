@@ -33,6 +33,12 @@ public:
 	//Distance bewteen two points
 	float Distance(Vector3 other);
 
+	//dot product
+	float DotProduct(Vector3 other);
+
+	//cross product
+	Vector3 CrossProduct(Vector3 other);
+
 private:
 
 	//x position, y position, and z position
