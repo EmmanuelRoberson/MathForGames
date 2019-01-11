@@ -40,7 +40,7 @@ public:
 	float dot_product(vector4 other);
 
 	//index of the vector, where the first value is at index 0
-	float operator[] (int index);
+	float& operator[] (int index);
 
 	//index of the vector, where first value is at index 0
 	/*float* operator[] (int index);*/

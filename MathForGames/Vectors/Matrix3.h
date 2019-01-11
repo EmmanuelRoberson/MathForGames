@@ -3,20 +3,25 @@
 
 class matrix_3
 {
-	
-
 
 public:
 
 	matrix_3();
-	void set(matrix_3);
+	matrix_3(Vector3, Vector3, Vector3);
 
-	matrix_3 operator * (const matrix_3) const;
+	matrix_3 operator* (matrix_3);
+	Vector3 operator* (Vector3);
+
+	Vector3& operator[] (int);
+
+	//rotates this matrix by an axis, argument in radians
+	void set_rotate_x(float);
+	void set_rotate_y(float);
+	void set_rotate_z(float);
 
 private:
 
-	// these represent the the values in the matrix
-	Vector3 x_col_, y_col_, z_col_;
-	Vector3 x_row_, y_row, z_row_;
+	//this represent the the values in the matrix
+	float matrix_data_[3][3];
 
 };

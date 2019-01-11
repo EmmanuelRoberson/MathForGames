@@ -105,8 +105,11 @@ float vector4::dot_product(vector4 other)
 			w_pos_ * other.w_pos_);
 }
 
-float vector4::operator[](int index)
+float& vector4::operator[](int index)
 {
+	//this is in case an index is passed in that is beyond the number vectors indexes
+	float zero = 0.0;
+
 	switch (index)
 	{
 	case 0:
@@ -118,7 +121,7 @@ float vector4::operator[](int index)
 	case 3:
 		return w_pos_;
 	default:
-		return 0.0;
+		return zero;
 	}
 }
 

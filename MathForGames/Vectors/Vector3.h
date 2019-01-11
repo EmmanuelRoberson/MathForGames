@@ -40,7 +40,7 @@ public:
 	Vector3 CrossProduct(Vector3 other);
 
 	//index of the vector, where the first value is at index 0
-	float operator[] (int index);
+	float& operator[] (int index);
 
 private:
 

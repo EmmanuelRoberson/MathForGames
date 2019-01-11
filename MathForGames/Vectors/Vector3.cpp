@@ -101,8 +101,11 @@ Vector3 Vector3::CrossProduct(Vector3 other)
 				   xPos * other.yPos - yPos * other.xPos);
 }
 
-float Vector3::operator[](int index)
+float& Vector3::operator[](int index)
 {
+	//this is in case an index is passed in that is beyond the number vectors indexes
+	float zero = 0.0;
+
 	switch (index)
 	{
 	case 0:
@@ -112,6 +115,6 @@ float Vector3::operator[](int index)
 	case 2:
 		return zPos;
 	default:
-		return 0.0;
+		return zero;
 	}
 }
