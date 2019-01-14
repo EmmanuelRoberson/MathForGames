@@ -7,7 +7,7 @@ public:
 	//default constructor that sets all values to 0.0
 	vector2();
 
-	//custom constructor that sets x, y in the argument
+	//custom constructor that sets x, y values
 	vector2(float x, float y);
 
 	// returns the x or y values
@@ -25,10 +25,10 @@ public:
 	bool operator == (vector2& rhs);
 	bool operator != (vector2& rhs);
 
-	//returns the magnitude of this Vector2
+	//returns the magnitude of this vector2
 	float magnitude();
 
-	//normalizes this Vector2
+	//normalizes this vector2
 	vector2 normalize();
 
 	//distance between two points

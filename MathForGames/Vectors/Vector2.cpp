@@ -24,8 +24,8 @@ float vector2::get_y()
 
 vector2 vector2::operator+(vector2 & rhs)
 {
-	vector2 temp = vector2(x_pos_ + rhs.x_pos_, y_pos_ + rhs.y_pos_);
-	return temp;
+	return vector2( x_pos_ + rhs.x_pos_,
+					y_pos_ + rhs.y_pos_);
 }
 
 vector2 vector2::operator-(vector2 & rhs)
