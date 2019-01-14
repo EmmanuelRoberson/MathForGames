@@ -1,14 +1,14 @@
 #pragma once
 
-class vector4
+class Vector4
 {
 public:
 
 	//default constructor that sets all values to 0.0
-	vector4();
+	Vector4();
 
 	//custom constructor that sets x, y, z, w
-	vector4(float x, float y, float z, float w);
+	Vector4(float x, float y, float z, float w);
 
 	// returns the x, y, z, or w values
 	float get_x();
@@ -17,27 +17,30 @@ public:
 	float get_w();
 
 	// addition and subtraction of vector4s
-	vector4 operator + (vector4& rhs);
-	vector4 operator - (vector4& rhs);
+	Vector4 operator + (Vector4& rhs);
+	Vector4 operator - (Vector4& rhs);
 
 	//scaling vector4s
-	vector4 operator * (float& rhs);
+	Vector4 operator * (float& rhs);
 
 	// comparison operations for vector4s
-	bool operator == (vector4& rhs);
-	bool operator != (vector4& rhs);
+	bool operator == (Vector4& rhs);
+	bool operator != (Vector4& rhs);
 
-	//returns the magnitude of this vector4
+	//returns the magnitude of this Vector4
 	float magnitude();
 
-	//normalizes this vector4
-	vector4 normalize();
+	//normalizes this Vector4
+	Vector4 normalise();
 
-	//distance between this and the argument vector4
-	float distance(vector4 other);
+	//cross product
+	Vector4 cross(Vector4 other);
 
-	//returns dot product of this and the argument vector4
-	float dot_product(vector4 other);
+	//distance between this and the argument Vector4
+	float distance(Vector4 other);
+
+	//returns dot product of this and the argument Vector4
+	float dot(Vector4 other);
 
 	//index of the vector, where the first value is at index 0
 	float& operator[] (int index);

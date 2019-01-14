@@ -1,48 +1,48 @@
 #include "Vector3.h"
 #include <cmath>
 
-vector3::vector3()
+Vector3::Vector3()
 {
 	x_pos_, y_pos_, z_pos_ = 0.0f;
 }
 
-vector3::vector3(float x, float y, float z)
+Vector3::Vector3(float x, float y, float z)
 {
 	x_pos_ = x;
 	y_pos_ = y;
 	z_pos_ = z;
 }
 
-float vector3::GetX()
+float Vector3::GetX()
 {
 	return x_pos_;
 }
 
-float vector3::GetY()
+float Vector3::GetY()
 {
 	return y_pos_;
 }
 
-float vector3::GetZ()
+float Vector3::GetZ()
 {
 	return z_pos_;
 }
 
-vector3 vector3::operator+(vector3& rhs)
+Vector3 Vector3::operator+(Vector3& rhs)
 {
-	return vector3( x_pos_ += rhs.x_pos_,
+	return Vector3( x_pos_ += rhs.x_pos_,
 					y_pos_ += rhs.y_pos_,
 					z_pos_ += rhs.z_pos_);
 }
 
-vector3 vector3::operator-(vector3& rhs)
+Vector3 Vector3::operator-(Vector3& rhs)
 {
-	return vector3( x_pos_ -= rhs.x_pos_,
+	return Vector3( x_pos_ -= rhs.x_pos_,
 					y_pos_ -= rhs.y_pos_,
 					z_pos_ -= rhs.z_pos_);
 }
 
-vector3 vector3::operator*(float& rhs)
+Vector3 Vector3::operator*(float& rhs)
 {
 	x_pos_ *= rhs;
 	y_pos_ *= rhs;
@@ -51,28 +51,28 @@ vector3 vector3::operator*(float& rhs)
 	return *this;
 }
 
-bool vector3::operator==(vector3& rhs)
+bool Vector3::operator==(Vector3& rhs)
 {
 	return (x_pos_ == rhs.x_pos_ &&
 			y_pos_ == rhs.y_pos_ &&
 			z_pos_ == rhs.z_pos_);
 }
 
-bool vector3::operator!=(vector3& rhs)
+bool Vector3::operator!=(Vector3& rhs)
 {
 	return (x_pos_ != rhs.x_pos_ ||
 			y_pos_ != rhs.y_pos_ ||
 			z_pos_ != rhs.z_pos_);
 }
 
-float vector3::magnitude()
+float Vector3::magnitude()
 {
 	return sqrt((x_pos_*x_pos_) + 
 				(y_pos_*y_pos_) + 
 				(z_pos_*z_pos_));
 }
 
-vector3 vector3::normalize()
+Vector3 Vector3::normalise()
 {
 	float mag = magnitude();
 	x_pos_ /= mag;
@@ -82,26 +82,26 @@ vector3 vector3::normalize()
 	return *this;
 }
 
-float vector3::distance(vector3 other)
+float Vector3::distance(Vector3 other)
 {
 	return (*this - other).magnitude();
 }
 
-float vector3::dot_product(vector3 other)
+float Vector3::dot(Vector3 other)
 {
 	return (x_pos_ * other.x_pos_ + 
 			y_pos_ * other.y_pos_ + 
 			z_pos_ * other.z_pos_);
 }
 
-vector3 vector3::cross_product(vector3 other)
+Vector3 Vector3::cross(Vector3 other)
 {
-	return vector3(y_pos_ * other.z_pos_ - z_pos_ * other.y_pos_,
+	return Vector3(y_pos_ * other.z_pos_ - z_pos_ * other.y_pos_,
 				   z_pos_ * other.x_pos_ - x_pos_ * other.z_pos_,
 				   x_pos_ * other.y_pos_ - y_pos_ * other.x_pos_);
 }
 
-float& vector3::operator[](int index)
+float& Vector3::operator[](int index)
 {
 	//this is in case an index is passed in that is beyond the number vectors indexes
 	float zero = 0.0;

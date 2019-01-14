@@ -1,21 +1,21 @@
 #pragma once
-#include "vector3.h"
+#include "Vector3.h"
 
-class matrix_3
+class Matrix3
 {
 
 public:
 
-	matrix_3();
-	matrix_3(vector3, vector3, vector3);
+	Matrix3();
+	Matrix3(Vector3, Vector3, Vector3);
 
-	matrix_3 operator* (matrix_3);
-	vector3 operator* (vector3);
+	Matrix3 operator* (Matrix3);
+	Vector3 operator* (Vector3);
 
-	vector3& operator[] (int);
+	Vector3& operator[] (int);
 
 	//rotates this matrix by z axis, argument in radians
-	void set_rotate_z(float);
+	void setRotateZ(float);
 
 private:
 

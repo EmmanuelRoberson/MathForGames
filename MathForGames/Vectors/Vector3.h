@@ -1,44 +1,44 @@
 #pragma once
 
-class vector3
+class Vector3
 {
 public:
 
 	//default constructor that sets all values to 0.0
-	vector3();
+	Vector3();
 
 	//custom constructor that sets x, y, z
-	vector3(float x, float y, float z);
+	Vector3(float x, float y, float z);
 
 	float GetX();
 	float GetY();
 	float GetZ();
 
 	// addition and subtraction of vector3s
-	vector3 operator + (vector3& rhs);
-	vector3 operator - (vector3& rhs);
+	Vector3 operator + (Vector3& rhs);
+	Vector3 operator - (Vector3& rhs);
 
 	//scaling vector3s
-	vector3 operator * (float& rhs);
+	Vector3 operator * (float& rhs);
 
 	// comparison operations for vector3s
-	bool operator == (vector3& rhs);
-	bool operator != (vector3& rhs);
+	bool operator == (Vector3& rhs);
+	bool operator != (Vector3& rhs);
 
-	//returns the magnitude of this vector3
+	//returns the magnitude of this Vector3
 	float magnitude();
 
-	//normalizes this vector3
-	vector3 normalize();
+	//normalizes this Vector3
+	Vector3 normalise();
 
 	//Distance between two points
-	float distance(vector3 other);
+	float distance(Vector3 other);
 
 	//dot product
-	float dot_product(vector3 other);
+	float dot(Vector3 other);
 
 	//cross product
-	vector3 cross_product(vector3 other);
+	Vector3 cross(Vector3 other);
 
 	//index of the vector, where the first value is at index 0
 	float& operator[] (int index);

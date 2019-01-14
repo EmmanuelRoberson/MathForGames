@@ -1,12 +1,12 @@
 #include "Vector4.h"
 #include "cmath"
 
-vector4::vector4()
+Vector4::Vector4()
 {
 	x_pos_, y_pos_, z_pos_, w_pos_ = 0.0f;
 }
 
-vector4::vector4(float x, float y, float z, float w)
+Vector4::Vector4(float x, float y, float z, float w)
 {
 	x_pos_ = x;
 	y_pos_ = y;
@@ -14,43 +14,43 @@ vector4::vector4(float x, float y, float z, float w)
 	w_pos_ = w;
 }
 
-float vector4::get_x()
+float Vector4::get_x()
 {
 	return x_pos_;
 }
 
-float vector4::get_y()
+float Vector4::get_y()
 {
 	return y_pos_;
 }
 
-float vector4::get_z()
+float Vector4::get_z()
 {
 	return z_pos_;
 }
 
-float vector4::get_w()
+float Vector4::get_w()
 {
 	return w_pos_;
 }
 
-vector4 vector4::operator+(vector4 & rhs)
+Vector4 Vector4::operator+(Vector4 & rhs)
 {
-	return vector4( x_pos_ + rhs.x_pos_,
+	return Vector4( x_pos_ + rhs.x_pos_,
 					y_pos_ + rhs.y_pos_,
 					z_pos_ + rhs.z_pos_, 
 					w_pos_ + rhs.w_pos_);
 }
 
-vector4 vector4::operator-(vector4 & rhs)
+Vector4 Vector4::operator-(Vector4 & rhs)
 {
-	return vector4( x_pos_ - rhs.x_pos_,
+	return Vector4( x_pos_ - rhs.x_pos_,
 					y_pos_ - rhs.y_pos_,
 					z_pos_ - rhs.z_pos_, 
 					w_pos_ - rhs.w_pos_);
 }
 
-vector4 vector4::operator*(float& rhs)
+Vector4 Vector4::operator*(float& rhs)
 {
 	x_pos_ *= rhs;
 	y_pos_ *= rhs;
@@ -60,7 +60,7 @@ vector4 vector4::operator*(float& rhs)
 	return *this;
 }
 
-bool vector4::operator==(vector4& rhs)
+bool Vector4::operator==(Vector4& rhs)
 {
 	return (x_pos_ == rhs.x_pos_ &&
 			y_pos_ == rhs.y_pos_ &&
@@ -68,7 +68,7 @@ bool vector4::operator==(vector4& rhs)
 			w_pos_ == rhs.w_pos_);
 }
 
-bool vector4::operator!=(vector4& rhs)
+bool Vector4::operator!=(Vector4& rhs)
 {
 	return (x_pos_ != rhs.x_pos_ ||
 			y_pos_ != rhs.y_pos_ ||
@@ -76,7 +76,7 @@ bool vector4::operator!=(vector4& rhs)
 			w_pos_ != rhs.w_pos_);
 }
 
-float vector4::magnitude()
+float Vector4::magnitude()
 {
 	return sqrt((x_pos_*x_pos_) + 
 				(y_pos_*y_pos_) +
@@ -84,7 +84,7 @@ float vector4::magnitude()
 				(w_pos_*w_pos_));
 }
 
-vector4 vector4::normalize()
+Vector4 Vector4::normalise()
 {
 	float mag = magnitude();
 	x_pos_ /= mag;
@@ -93,12 +93,20 @@ vector4 vector4::normalize()
 	return *this;
 }
 
-float vector4::distance(vector4 other)
+Vector4 Vector4::cross(Vector4 other)
+{
+	return Vector4( y_pos_ * other.z_pos_ - z_pos_ * other.y_pos_,
+					z_pos_ * other.x_pos_ - x_pos_ * other.z_pos_,
+					x_pos_ * other.y_pos_ - y_pos_ * other.x_pos_,
+					0.0);
+}
+
+float Vector4::distance(Vector4 other)
 {
 	return (*this - other).magnitude();
 }
 
-float vector4::dot_product(vector4 other)
+float Vector4::dot(Vector4 other)
 {
 	return (x_pos_ * other.x_pos_ + 
 			y_pos_ * other.y_pos_ +
@@ -106,7 +114,7 @@ float vector4::dot_product(vector4 other)
 			w_pos_ * other.w_pos_);
 }
 
-float& vector4::operator[](int index)
+float& Vector4::operator[](int index)
 {
 	//this is in case an index is passed in that is beyond the number vectors indexes
 	float zero = 0.0;

@@ -2,7 +2,7 @@
 #include "cmath"
 
 
-matrix_4::matrix_4()
+Matrix4::Matrix4()
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -13,7 +13,7 @@ matrix_4::matrix_4()
 	}
 }
 
-matrix_4::matrix_4(vector4 x_vec, vector4 y_vec, vector4 z_vec, vector4 w_vec)
+Matrix4::Matrix4(Vector4 x_vec, Vector4 y_vec, Vector4 z_vec, Vector4 w_vec)
 {
 	for (int i = 0; i < 4; i++)
 		matrix_data_[i][0] = x_vec[i];
@@ -28,9 +28,9 @@ matrix_4::matrix_4(vector4 x_vec, vector4 y_vec, vector4 z_vec, vector4 w_vec)
 		matrix_data_[i][3] = z_vec[i];
 }
 
-matrix_4 matrix_4::operator*(matrix_4 other)
+Matrix4 Matrix4::operator*(Matrix4 other)
 {
-	matrix_4 result;
+	Matrix4 result;
 
 	for (int r = 0; r < 4; r++)
 	{
@@ -48,9 +48,9 @@ matrix_4 matrix_4::operator*(matrix_4 other)
 	return result;
 }
 
-vector4 matrix_4::operator*(vector4 vec)
+Vector4 Matrix4::operator*(Vector4 vec)
 {
-	vector4 result;
+	Vector4 result;
 
 	for (int r = 0; r < 4; r++)
 	{
@@ -63,9 +63,9 @@ vector4 matrix_4::operator*(vector4 vec)
 	return result;
 }
 
-vector4& matrix_4::operator[](int)
+Vector4& Matrix4::operator[](int)
 {
-	vector4 vec4 = vector4( matrix_data_[0][0],
+	Vector4 vec4 = Vector4( matrix_data_[0][0],
 							matrix_data_[1][0],
 							matrix_data_[2][0],
 							matrix_data_[3][0]);
@@ -73,14 +73,14 @@ vector4& matrix_4::operator[](int)
 	return vec4;
 }
 
-void matrix_4::set_rotate_x(float radians)
+void Matrix4::setRotateX(float radians)
 {
-	auto rotation_x_col = vector4(1, 0.0, 0.0, 0.0);
-	auto rotation_y_col = vector4(0.0, cos(radians), sin(radians), 0.0);
-	auto rotation_z_col = vector4(0.0, -sin(radians), cos(radians), 0.0);
-	auto rotation_w_col = vector4(0.0, 0.0, 0.0, 1.0);
+	auto rotation_x_col = Vector4(1, 0.0, 0.0, 0.0);
+	auto rotation_y_col = Vector4(0.0, cos(radians), sin(radians), 0.0);
+	auto rotation_z_col = Vector4(0.0, -sin(radians), cos(radians), 0.0);
+	auto rotation_w_col = Vector4(0.0, 0.0, 0.0, 1.0);
 
-	matrix_4 x_rotation_matrix = matrix_4(rotation_x_col,
+	Matrix4 x_rotation_matrix = Matrix4(rotation_x_col,
 										  rotation_y_col,
 										  rotation_z_col,
 										  rotation_w_col);
@@ -88,14 +88,14 @@ void matrix_4::set_rotate_x(float radians)
 	*this = (*this * x_rotation_matrix);
 }
 
-void matrix_4::set_rotate_y(float radians)
+void Matrix4::setRotateY(float radians)
 {
-	auto rotation_x_col = vector4(cos(radians), 0.0, -sin(radians), 0.0);
-	auto rotation_y_col = vector4(0.0, 1.0, 0.0, 0.0);
-	auto rotation_z_col = vector4(sin(radians), 0.0, cos(radians), 0.0);
-	auto rotation_w_col = vector4(0.0, 0.0, 0.0, 1.0);
+	auto rotation_x_col = Vector4(cos(radians), 0.0, -sin(radians), 0.0);
+	auto rotation_y_col = Vector4(0.0, 1.0, 0.0, 0.0);
+	auto rotation_z_col = Vector4(sin(radians), 0.0, cos(radians), 0.0);
+	auto rotation_w_col = Vector4(0.0, 0.0, 0.0, 1.0);
 
-	matrix_4 y_rotation_matrix = matrix_4(rotation_x_col,
+	Matrix4 y_rotation_matrix = Matrix4(rotation_x_col,
 										  rotation_y_col,
 										  rotation_z_col,
 										  rotation_w_col);
@@ -103,14 +103,14 @@ void matrix_4::set_rotate_y(float radians)
 	*this = (*this * y_rotation_matrix);
 }
 
-void matrix_4::set_rotate_z(float radians)
+void Matrix4::setRotateZ(float radians)
 {
-	auto rotation_x_col = vector4(cos(radians), sin(radians), 0.0, 0.0);
-	auto rotation_y_col = vector4(-sin(radians), cos(radians), 0.0, 0.0);
-	auto rotation_z_col = vector4(0.0, 0.0, 1.0, 0.0);
-	auto rotation_w_col = vector4(0.0, 0.0, 0.0, 1.0);
+	auto rotation_x_col = Vector4(cos(radians), sin(radians), 0.0, 0.0);
+	auto rotation_y_col = Vector4(-sin(radians), cos(radians), 0.0, 0.0);
+	auto rotation_z_col = Vector4(0.0, 0.0, 1.0, 0.0);
+	auto rotation_w_col = Vector4(0.0, 0.0, 0.0, 1.0);
 
-	matrix_4 z_rotation_matrix = matrix_4(rotation_x_col,
+	Matrix4 z_rotation_matrix = Matrix4(rotation_x_col,
 										  rotation_y_col,
 										  rotation_z_col,
 										  rotation_w_col);

@@ -1,41 +1,41 @@
 #include <iostream>
 
-class vector2
+class Vector2
 {
 public:
 
 	//default constructor that sets all values to 0.0
-	vector2();
+	Vector2();
 
 	//custom constructor that sets x, y values
-	vector2(float x, float y);
+	Vector2(float x, float y);
 
 	// returns the x or y values
 	float get_x();
 	float get_y();
 
 	//addition and subtraction of Vector2s
-	vector2 operator + (vector2& rhs);
-	vector2 operator - (vector2& rhs);
+	Vector2 operator + (Vector2& rhs);
+	Vector2 operator - (Vector2& rhs);
 
 	//scaling Vector2s
-	vector2 operator * (float& rhs);
+	Vector2 operator * (float& rhs);
 
 	//comparing Vector2s
-	bool operator == (vector2& rhs);
-	bool operator != (vector2& rhs);
+	bool operator == (Vector2& rhs);
+	bool operator != (Vector2& rhs);
 
-	//returns the magnitude of this vector2
+	//returns the magnitude of this Vector2
 	float magnitude();
 
-	//normalizes this vector2
-	vector2 normalize();
+	//normalizes this Vector2
+	Vector2 normalise();
 
 	//distance between two points
-	float distance(vector2 other);
+	float distance(Vector2 other);
 
 	//dot product
-	float dot_product(vector2 other);
+	float dot(Vector2 other);
 
 	//index of the vector, where the first value is at index 0
 	float operator [](int index);
