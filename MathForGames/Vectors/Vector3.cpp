@@ -1,107 +1,107 @@
 #include "Vector3.h"
+#include <cmath>
 
-Vector3::Vector3()
+vector3::vector3()
 {
-	xPos, yPos, zPos = 0.0f;
+	x_pos_, y_pos_, z_pos_ = 0.0f;
 }
 
-Vector3::Vector3(float x, float y, float z)
+vector3::vector3(float x, float y, float z)
 {
-	xPos = x;
-	yPos = y;
-	zPos = z;
+	x_pos_ = x;
+	y_pos_ = y;
+	z_pos_ = z;
 }
 
-float Vector3::GetX()
+float vector3::GetX()
 {
-	return xPos;
+	return x_pos_;
 }
 
-float Vector3::GetY()
+float vector3::GetY()
 {
-	return yPos;
+	return y_pos_;
 }
 
-float Vector3::GetZ()
+float vector3::GetZ()
 {
-	return zPos;
+	return z_pos_;
 }
 
-Vector3 Vector3::operator+(Vector3& rhs)
+vector3 vector3::operator+(vector3& rhs)
 {
-	xPos += rhs.xPos;
-	yPos += rhs.yPos;
-	zPos += rhs.zPos;
+	return vector3( x_pos_ += rhs.x_pos_,
+					y_pos_ += rhs.y_pos_,
+					z_pos_ += rhs.z_pos_);
+}
+
+vector3 vector3::operator-(vector3& rhs)
+{
+	return vector3( x_pos_ -= rhs.x_pos_,
+					y_pos_ -= rhs.y_pos_,
+					z_pos_ -= rhs.z_pos_);
+}
+
+vector3 vector3::operator*(float& rhs)
+{
+	x_pos_ *= rhs;
+	y_pos_ *= rhs;
+	z_pos_ *= rhs;
 
 	return *this;
 }
 
-Vector3 Vector3::operator-(Vector3& rhs)
+bool vector3::operator==(vector3& rhs)
 {
-	xPos -= rhs.xPos;
-	yPos -= rhs.yPos;
-	zPos -= rhs.zPos;
+	return (x_pos_ == rhs.x_pos_ &&
+			y_pos_ == rhs.y_pos_ &&
+			z_pos_ == rhs.z_pos_);
+}
+
+bool vector3::operator!=(vector3& rhs)
+{
+	return (x_pos_ != rhs.x_pos_ ||
+			y_pos_ != rhs.y_pos_ ||
+			z_pos_ != rhs.z_pos_);
+}
+
+float vector3::magnitude()
+{
+	return sqrt((x_pos_*x_pos_) + 
+				(y_pos_*y_pos_) + 
+				(z_pos_*z_pos_));
+}
+
+vector3 vector3::normalize()
+{
+	float mag = magnitude();
+	x_pos_ /= mag;
+	y_pos_ /= mag;
+	z_pos_ /= mag;
 
 	return *this;
 }
 
-Vector3 Vector3::operator*(float& rhs)
+float vector3::distance(vector3 other)
 {
-	xPos *= rhs;
-	yPos *= rhs;
-	zPos *= rhs;
-
-	return *this;
+	return (*this - other).magnitude();
 }
 
-bool Vector3::operator==(Vector3& rhs)
+float vector3::dot_product(vector3 other)
 {
-	return (xPos == rhs.xPos &&
-			yPos == rhs.yPos &&
-			zPos == rhs.zPos);
+	return (x_pos_ * other.x_pos_ + 
+			y_pos_ * other.y_pos_ + 
+			z_pos_ * other.z_pos_);
 }
 
-bool Vector3::operator!=(Vector3& rhs)
+vector3 vector3::cross_product(vector3 other)
 {
-	return (xPos != rhs.xPos ||
-			yPos != rhs.yPos ||
-			zPos != rhs.zPos);
+	return vector3(y_pos_ * other.z_pos_ - z_pos_ * other.y_pos_,
+				   z_pos_ * other.x_pos_ - x_pos_ * other.z_pos_,
+				   x_pos_ * other.y_pos_ - y_pos_ * other.x_pos_);
 }
 
-float Vector3::Magnitude()
-{
-	return sqrt((xPos*xPos) + (yPos*yPos) + (zPos*zPos));
-}
-
-Vector3 Vector3::Normalize()
-{
-	float mag = Magnitude();
-	xPos /= mag;
-	yPos /= mag;
-	zPos /= mag;
-
-	return *this;
-}
-
-float Vector3::Distance(Vector3 other)
-{
-	Vector3 temp = Vector3(xPos - other.xPos, yPos - other.yPos, zPos - other.zPos);
-	return temp.Magnitude();
-}
-
-float Vector3::DotProduct(Vector3 other)
-{
-	return (xPos * other.xPos + yPos * other.yPos + zPos * other.zPos);
-}
-
-Vector3 Vector3::CrossProduct(Vector3 other)
-{
-	return Vector3(yPos * other.zPos - zPos * other.yPos,
-				   zPos * other.xPos - xPos * other.zPos,
-				   xPos * other.yPos - yPos * other.xPos);
-}
-
-float& Vector3::operator[](int index)
+float& vector3::operator[](int index)
 {
 	//this is in case an index is passed in that is beyond the number vectors indexes
 	float zero = 0.0;
@@ -109,11 +109,11 @@ float& Vector3::operator[](int index)
 	switch (index)
 	{
 	case 0:
-		return xPos;
+		return x_pos_;
 	case 1:
-		return yPos;
+		return y_pos_;
 	case 2:
-		return zPos;
+		return z_pos_;
 	default:
 		return zero;
 	}

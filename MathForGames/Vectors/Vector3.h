@@ -1,43 +1,44 @@
-#include <iostream>
+#pragma once
 
-class Vector3
+class vector3
 {
 public:
 
-	Vector3();
+	//default constructor that sets all values to 0.0
+	vector3();
 
-	//instantiate Vector3 with custom xPos and yPos 
-	Vector3(float x, float y, float z);
+	//custom constructor that sets x, y, z
+	vector3(float x, float y, float z);
 
 	float GetX();
 	float GetY();
 	float GetZ();
 
-	//addition and subtraction of Vector3s
-	Vector3 operator + (Vector3& rhs);
-	Vector3 operator - (Vector3& rhs);
+	// addition and subtraction of vector3s
+	vector3 operator + (vector3& rhs);
+	vector3 operator - (vector3& rhs);
 
-	//scaling Vector3s
-	Vector3 operator * (float& rhs);
+	//scaling vector3s
+	vector3 operator * (float& rhs);
 
-	//comparing Vector3s
-	bool operator == (Vector3& rhs);
-	bool operator != (Vector3& rhs);
+	// comparison operations for vector3s
+	bool operator == (vector3& rhs);
+	bool operator != (vector3& rhs);
 
-	//returns the magnitude of this Vector2
-	float Magnitude();
+	//returns the magnitude of this vector3
+	float magnitude();
 
 	//normalizes this vector3
-	Vector3 Normalize();
+	vector3 normalize();
 
-	//Distance bewteen two points
-	float Distance(Vector3 other);
+	//Distance between two points
+	float distance(vector3 other);
 
 	//dot product
-	float DotProduct(Vector3 other);
+	float dot_product(vector3 other);
 
 	//cross product
-	Vector3 CrossProduct(Vector3 other);
+	vector3 cross_product(vector3 other);
 
 	//index of the vector, where the first value is at index 0
 	float& operator[] (int index);
@@ -45,8 +46,8 @@ public:
 private:
 
 	//x position, y position, and z position
-	float xPos;
-	float yPos;
-	float zPos;
+	float x_pos_;
+	float y_pos_;
+	float z_pos_;
 
 };

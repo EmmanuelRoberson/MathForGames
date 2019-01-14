@@ -7,7 +7,7 @@ public:
 	//default constructor that sets all values to 0.0
 	vector4();
 
-	//custom constructor that sets x, y, z, w in the argument
+	//custom constructor that sets x, y, z, w
 	vector4(float x, float y, float z, float w);
 
 	// returns the x, y, z, or w values
@@ -23,14 +23,14 @@ public:
 	//scaling vector4s
 	vector4 operator * (float& rhs);
 
-	// inequality and equality operator for vector4s
+	// comparison operations for vector4s
 	bool operator == (vector4& rhs);
 	bool operator != (vector4& rhs);
 
-	//returns the magnitude of this vector2
+	//returns the magnitude of this vector4
 	float magnitude();
 
-	//normalizes this vector2
+	//normalizes this vector4
 	vector4 normalize();
 
 	//distance between this and the argument vector4

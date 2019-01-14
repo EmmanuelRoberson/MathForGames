@@ -86,8 +86,9 @@ float vector4::magnitude()
 
 vector4 vector4::normalize()
 {
-	x_pos_ /= magnitude();
-	y_pos_ /= magnitude();
+	float mag = magnitude();
+	x_pos_ /= mag;
+	y_pos_ /= mag;
 
 	return *this;
 }

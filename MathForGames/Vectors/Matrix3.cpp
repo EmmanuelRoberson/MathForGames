@@ -1,4 +1,5 @@
 ﻿#include "Matrix3.h"
+#include <cmath>
 
 matrix_3::matrix_3()
 {
@@ -11,7 +12,7 @@ matrix_3::matrix_3()
 	}
 }
 
-matrix_3::matrix_3(Vector3 x_vec, Vector3 y_vec, Vector3 z_vec)
+matrix_3::matrix_3(vector3 x_vec, vector3 y_vec, vector3 z_vec)
 {
 
 	for (int i = 0; i < 3; i++)
@@ -46,9 +47,9 @@ matrix_3 matrix_3::operator*(matrix_3 other)
 }
 
 //Cr = M.0r V.r + M.1r V.r + M.2r V.r
-Vector3 matrix_3::operator*( Vector3 vec)
+vector3 matrix_3::operator*( vector3 vec)
 {
-	Vector3 result;
+	vector3 result;
 
 	for (int r = 0; r < 3; r++)
 	{
@@ -60,35 +61,25 @@ Vector3 matrix_3::operator*( Vector3 vec)
 	return result;
 }
 
-Vector3& matrix_3::operator[]( int) 
+vector3& matrix_3::operator[]( int) 
 {
-	Vector3 vec3 = Vector3( matrix_data_[0][0],
+	vector3 vec3 = vector3( matrix_data_[0][0],
 							matrix_data_[1][0],
 							matrix_data_[2][0]);
 
 	return vec3;
 }
 
-void matrix_3::set_rotate_x(float radians)
-{
-	Vector3 rotation_xcol = Vector3(1.0, 0.0, 0.0);
-	Vector3 rotation_ycol = Vector3(0.0, cos(radians), sin(radians));
-	Vector3 rotation_zcol = Vector3(0.0, -sin(radians), cos(radians));
-
-	matrix_3 x_rotation_matrix = matrix_3(rotation_xcol, 
-										  rotation_ycol, 
-										  rotation_ycol);
-
-	*this = (*this * x_rotation_matrix);
-}
-
-void matrix_3::set_rotate_y(float radians)
-{
-
-}
-
 void matrix_3::set_rotate_z(float radians)
 {
+	auto rotation_x_col = vector3(cos(radians), sin(radians), 0.0);
+	auto rotation_y_col = vector3(-sin(radians), cos(radians), 0);
+	auto rotation_z_col = vector3(0.0, 0.0, 1.0);
 
+	matrix_3 z_rotation_matrix = matrix_3(rotation_x_col,
+										  rotation_y_col,
+										  rotation_y_col);
+
+	*this = (*this * z_rotation_matrix);
 }
 
