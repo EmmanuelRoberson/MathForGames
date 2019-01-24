@@ -13,6 +13,8 @@ public:
 	Vector4 operator* (Vector4);
 
 	Vector4& operator[] (int);
+	
+	operator float*();
 
 	// rotates this matrix by x, y, or z axis, argument in radians
 	void setRotateX(float);
@@ -22,6 +24,6 @@ public:
 private:
 
 	//this represent the the values in the matrix
-	float matrix_data_[4][4];
+	float matrixData[4][4];
 
 };

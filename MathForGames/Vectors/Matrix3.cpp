@@ -7,7 +7,7 @@ Matrix3::Matrix3()
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			matrix_data_[i][j] = 0.0;
+			matrixData[i][j] = 0.0;
 		}
 	}
 }
@@ -16,13 +16,13 @@ Matrix3::Matrix3(Vector3 x_vec, Vector3 y_vec, Vector3 z_vec)
 {
 
 	for (int i = 0; i < 3; i++)
-		matrix_data_[i][0] = x_vec[i];
+		matrixData[i][0] = x_vec[i];
 
 	for (int i = 0; i < 3; i++)
-		matrix_data_[i][1] = y_vec[i];
+		matrixData[i][1] = y_vec[i];
 
 	for (int i = 0; i < 3; i++)
-		matrix_data_[i][2] = z_vec[i];
+		matrixData[i][2] = z_vec[i];
 
 }
 
@@ -35,10 +35,10 @@ Matrix3 Matrix3::operator*(Matrix3 other)
 	{
 		for (int c = 0; c < 3; c++)
 		{
-			result.matrix_data_[c][r] =
-				matrix_data_[0][r] * other.matrix_data_[c][0] +
-				matrix_data_[1][r] * other.matrix_data_[c][1] +
-				matrix_data_[2][r] * other.matrix_data_[c][2];
+			result.matrixData[c][r] =
+				matrixData[0][r] * other.matrixData[c][0] +
+				matrixData[1][r] * other.matrixData[c][1] +
+				matrixData[2][r] * other.matrixData[c][2];
 										
 		}
 	}
@@ -53,19 +53,24 @@ Vector3 Matrix3::operator*( Vector3 vec)
 
 	for (int r = 0; r < 3; r++)
 	{
-		result[r] = matrix_data_[0][r] * vec[r] +
-					matrix_data_[1][r] * vec[r] +
-					matrix_data_[2][r] * vec[r];
+		result[r] = matrixData[0][r] * vec[r] +
+					matrixData[1][r] * vec[r] +
+					matrixData[2][r] * vec[r];
 	}
 
 	return result;
 }
 
+Matrix3::operator float*()
+{
+	return matrixData[0];
+}
+
 Vector3& Matrix3::operator[]( int) 
 {
-	Vector3 vec3 = Vector3( matrix_data_[0][0],
-							matrix_data_[1][0],
-							matrix_data_[2][0]);
+	Vector3 vec3 = Vector3( matrixData[0][0],
+							matrixData[1][0],
+							matrixData[2][0]);
 
 	return vec3;
 }
