@@ -90,3 +90,12 @@ float Vector2::operator[](int index)
 		return 0.0;
 	}
 }
+
+Vector2::operator float*()
+{
+
+	float temp[2] = { x_pos_, y_pos_ };
+
+	return &temp[0];
+
+}

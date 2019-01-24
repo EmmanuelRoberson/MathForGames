@@ -40,6 +40,9 @@ public:
 	//index of the vector, where the first value is at index 0
 	float operator [](int index);
 
+	// casting the vector as a float pointer
+	operator float* ();
+
 private:
 
 	//x position and y position

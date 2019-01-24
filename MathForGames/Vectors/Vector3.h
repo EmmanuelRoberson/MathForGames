@@ -43,6 +43,9 @@ public:
 	//index of the vector, where the first value is at index 0
 	float& operator[] (int index);
 
+	// overloaded casting as a float*
+	operator float* ();
+
 private:
 
 	//x position, y position, and z position

@@ -118,3 +118,10 @@ float& Vector3::operator[](int index)
 		return zero;
 	}
 }
+
+Vector3::operator float*()
+{
+	float temp[3] = { x_pos_, y_pos_, z_pos_ };
+
+	return &temp[0];
+}

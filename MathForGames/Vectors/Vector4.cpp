@@ -134,3 +134,10 @@ float& Vector4::operator[](int index)
 	}
 }
 
+Vector4::operator float*()
+{
+	float temp[4] = { x_pos_, y_pos_, z_pos_, w_pos_ };
+
+	return &temp[0];
+}
+
