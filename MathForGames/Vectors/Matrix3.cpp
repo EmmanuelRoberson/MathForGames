@@ -8,6 +8,7 @@ Matrix3::Matrix3()
 		for (int j = 0; j < 3; j++)
 		{
 			matrixData[i][j] = 0.0;
+			identityMatrixData[i][j] = 0.0;
 		}
 	}
 }
@@ -16,14 +17,51 @@ Matrix3::Matrix3(Vector3 x_vec, Vector3 y_vec, Vector3 z_vec)
 {
 
 	for (int i = 0; i < 3; i++)
+	{
 		matrixData[i][0] = x_vec[i];
+		identityMatrixData[i][0] = x_vec[i];
+	}
 
 	for (int i = 0; i < 3; i++)
+	{
 		matrixData[i][1] = y_vec[i];
+		identityMatrixData[i][0] = y_vec[i];
+	}
 
 	for (int i = 0; i < 3; i++)
+	{
 		matrixData[i][2] = z_vec[i];
+		identityMatrixData[i][0] = z_vec[i];
+	}
 
+}
+
+//Matrix3::Matrix3(int xx, int xy, int xz, int yx, int yy, int yz, int zx, int zy, int zz)
+//{
+//	int* iter = &xx;
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 3; j++)
+//		{
+//			matrixData[i][j] = *iter;
+//			identityMatrixData[i][j] = *iter++;
+//		}
+//	}
+//}
+
+Matrix3::Matrix3(float xx, float xy, float xz, float yx, float yy, float yz, float zx, float zy, float zz)
+{
+	float* iter = &xx;
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			matrixData[i][j] = *iter;
+			identityMatrixData[i][j] = *iter++;
+		}
+	}
 }
 
 //𝐶𝑐𝑟 = 𝐴.0𝑟 𝐵.𝑐0 + 𝐴.1𝑟 𝐵.𝑐1 + 𝐴.2𝑟 𝐵.𝑐2
@@ -75,16 +113,51 @@ Vector3& Matrix3::operator[]( int)
 	return vec3;
 }
 
+void Matrix3::setRotateX(float radians)
+{
+	Matrix3 x_rotation_matrix = Matrix3(cos(radians), sin(radians), 0.0, -sin(radians), cos(radians), 0.0, 0.0, 0.0, 1.0);
+
+	for (int r = 0; r < 3; r++)
+	{
+		for (int c = 0; c < 3; c++)
+		{
+			matrixData[c][r] =
+				identityMatrixData[0][r] * x_rotation_matrix.matrixData[c][0] +
+				identityMatrixData[1][r] * x_rotation_matrix.matrixData[c][1] +
+				identityMatrixData[2][r] * x_rotation_matrix.matrixData[c][2];
+		}
+	}
+}
+
+void Matrix3::setRotateY(float radians)
+{
+	Matrix3 y_rotation_matrix = Matrix3(cos(radians), 0.0, -sin(radians), 0.0, 1.0, 0.0, sin(0), 0.0, cos(radians));
+
+	for (int r = 0; r < 3; r++)
+	{
+		for (int c = 0; c < 3; c++)
+		{
+			matrixData[c][r] =
+				identityMatrixData[0][r] * y_rotation_matrix.matrixData[c][0] +
+				identityMatrixData[1][r] * y_rotation_matrix.matrixData[c][1] +
+				identityMatrixData[2][r] * y_rotation_matrix.matrixData[c][2];
+		}
+	}
+}
+
 void Matrix3::setRotateZ(float radians)
 {
-	auto rotation_x_col = Vector3(cos(radians), sin(radians), 0.0);
-	auto rotation_y_col = Vector3(-sin(radians), cos(radians), 0);
-	auto rotation_z_col = Vector3(0.0, 0.0, 1.0);
-
-	Matrix3 z_rotation_matrix = Matrix3(rotation_x_col,
-										  rotation_y_col,
-										  rotation_y_col);
-
-	*this = (*this * z_rotation_matrix);
+	Matrix3 z_rotation_matrix = Matrix3(1.0, 0.0, 0.0, 0.0, cos(radians), sin(radians), 0.0, -sin(radians), cos(radians));
+	
+	for (int r = 0; r < 3; r++)
+	{
+		for (int c = 0; c < 3; c++)
+		{
+			matrixData[c][r] =
+			identityMatrixData[0][r] * z_rotation_matrix.matrixData[c][0] +
+			identityMatrixData[1][r] * z_rotation_matrix.matrixData[c][1] +
+			identityMatrixData[2][r] * z_rotation_matrix.matrixData[c][2];
+		}
+	}
 }
 

@@ -50,7 +50,7 @@ Vector4 Vector4::operator-(Vector4 & rhs)
 					w_pos_ - rhs.w_pos_);
 }
 
-Vector4 Vector4::operator*(float& rhs)
+Vector4 Vector4::operator*(float rhs)
 {
 	x_pos_ *= rhs;
 	y_pos_ *= rhs;
@@ -139,5 +139,10 @@ Vector4::operator float*()
 	float temp[4] = { x_pos_, y_pos_, z_pos_, w_pos_ };
 
 	return &temp[0];
+}
+
+Vector4 operator*(float lhs, Vector4 rhs)
+{
+	return rhs * lhs;
 }
 

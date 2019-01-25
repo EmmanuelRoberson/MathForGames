@@ -42,7 +42,7 @@ Vector3 Vector3::operator-(Vector3& rhs)
 					z_pos_ -= rhs.z_pos_);
 }
 
-Vector3 Vector3::operator*(float& rhs)
+Vector3 Vector3::operator*(float rhs)
 {
 	x_pos_ *= rhs;
 	y_pos_ *= rhs;
@@ -124,4 +124,9 @@ Vector3::operator float*()
 	float temp[3] = { x_pos_, y_pos_, z_pos_ };
 
 	return &temp[0];
+}
+
+Vector3 operator*(float lhs, Vector3 rhs)
+{
+	return rhs * lhs;
 }

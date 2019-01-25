@@ -34,7 +34,7 @@ Vector2 Vector2::operator-(Vector2 & rhs)
 	return temp;
 }
 
-Vector2 Vector2::operator*(float& rhs)
+Vector2 Vector2::operator*(float rhs)
 {
 	x_pos_ *= rhs;
 	y_pos_ *= rhs;
@@ -98,4 +98,9 @@ Vector2::operator float*()
 
 	return &temp[0];
 
+}
+
+Vector2 operator*(float lhs, Vector2 rhs)
+{
+	return rhs * lhs;
 }

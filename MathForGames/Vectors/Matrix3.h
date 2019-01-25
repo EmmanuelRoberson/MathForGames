@@ -8,6 +8,12 @@ public:
 
 	Matrix3();
 	Matrix3(Vector3, Vector3, Vector3);
+	//Matrix3(int, int, int,
+	//		int, int, int,
+	//		int, int, int);
+	Matrix3(float, float, float,
+			float, float, float,
+			float, float, float);
 
 	Matrix3 operator* (Matrix3);
 	Vector3 operator* (Vector3);
@@ -16,12 +22,17 @@ public:
 
 	Vector3& operator[] (int);
 
-	//rotates this matrix by z axis, argument in radians
+	//rotates this matrix by x, y, z axis
+	void setRotateX(float);
+	void setRotateY(float);
 	void setRotateZ(float);
 
 private:
 
-	//this represent the the values in the matrix
+	//this represent the  values in the matrix
 	float matrixData[3][3];
+
+	//identity of this matrix
+	float identityMatrixData[3][3];
 
 };

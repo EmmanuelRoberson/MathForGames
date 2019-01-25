@@ -1,5 +1,5 @@
 #pragma once
-
+;
 class Vector4
 {
 public:
@@ -21,7 +21,7 @@ public:
 	Vector4 operator - (Vector4& rhs);
 
 	//scaling vector4s
-	Vector4 operator * (float& rhs);
+	Vector4 operator * (float rhs);
 
 	// comparison operations for vector4s
 	bool operator == (Vector4& rhs);
@@ -54,3 +54,5 @@ private:
 	float x_pos_, y_pos_, z_pos_, w_pos_;
 
 };
+
+Vector4 operator * (float, Vector4);

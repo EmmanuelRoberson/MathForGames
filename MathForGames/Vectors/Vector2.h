@@ -19,8 +19,8 @@ public:
 	Vector2 operator - (Vector2& rhs);
 
 	//scaling Vector2s
-	Vector2 operator * (float& rhs);
-
+	Vector2 operator * (float rhs);
+	
 	//comparing Vector2s
 	bool operator == (Vector2& rhs);
 	bool operator != (Vector2& rhs);
@@ -50,3 +50,5 @@ private:
 	float y_pos_;
 
 };
+
+Vector2 operator * (float, Vector2);

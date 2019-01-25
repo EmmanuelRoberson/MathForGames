@@ -19,7 +19,7 @@ public:
 	Vector3 operator - (Vector3& rhs);
 
 	//scaling vector3s
-	Vector3 operator * (float& rhs);
+	Vector3 operator * (float rhs);
 
 	// comparison operations for vector3s
 	bool operator == (Vector3& rhs);
@@ -54,3 +54,5 @@ private:
 	float z_pos_;
 
 };
+
+Vector3 operator * (float, Vector3);
