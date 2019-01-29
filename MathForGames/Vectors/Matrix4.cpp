@@ -40,20 +40,6 @@ Matrix4::Matrix4(Vector4 x_vec, Vector4 y_vec, Vector4 z_vec, Vector4 w_vec)
 	}
 }
 
-//Matrix4::Matrix4(int xx, int xy, int xz, int xw, int yx, int yy, int yz, int yw, int zx, int zy, int zz, int zw, int wx, int wy, int wz, int ww)
-//{
-//	int* iter = &xx;
-//
-//	for (int i = 0; i < 4; i++)
-//	{
-//		for (int j = 0; j < 4; j++)
-//		{
-//			matrixData[i][j] = *iter;
-//			identityMatrixData[i][j] = *iter++;
-//		}
-//	}
-//}
-
 Matrix4::Matrix4(float xx, float xy, float xz, float xw, float yx, float yy, float yz, float yw, float zx, float zy, float zz, float zw, float wx, float wy, float wz, float ww)
 {
 	float* iter = &xx;

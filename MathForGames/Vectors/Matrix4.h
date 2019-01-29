@@ -8,10 +8,7 @@ public:
 
 	Matrix4();
 	Matrix4(Vector4, Vector4, Vector4, Vector4);
-	/*Matrix4(int, int, int, int, 
-			int, int, int, int, 
-			int, int, int, int, 
-			int, int, int, int);*/
+
 	Matrix4(float, float, float, float, 
 			float, float, float, float, 
 			float, float, float, float, 
