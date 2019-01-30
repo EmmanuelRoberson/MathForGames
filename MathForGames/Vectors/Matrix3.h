@@ -8,9 +8,7 @@ public:
 
 	Matrix3();
 	Matrix3(Vector3, Vector3, Vector3);
-	//Matrix3(int, int, int,
-	//		int, int, int,
-	//		int, int, int);
+
 	Matrix3(float, float, float,
 			float, float, float,
 			float, float, float);

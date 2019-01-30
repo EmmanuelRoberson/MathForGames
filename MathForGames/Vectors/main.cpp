@@ -1,37 +1,26 @@
-//#include "Matrix4.h"
+//#include "Matrix3.h"
 //#define PI 3.14159265
 //
 //int main()
 //{
-//	auto testMat = Matrix4(
-//	1.0f, 1.0f, 1.0f, 1.0f,
-//	1.0f, 1.0f, 1.0f, 1.0f,
-//	1.0f, 1.0f, 1.0f, 1.0f,
-//	1.0f, 1.0f, 1.0f, 1.0f);
+//	Matrix3 m3a;
+//	Matrix3 m3c;
 //
-//	//works
-//	testMat.setRotateX(PI);
+//	m3a.setRotateX(3.98f);
+//	m3c.setRotateZ(9.62f);
 //
-//	//works
-//	testMat.setRotateY(PI);
+//	Matrix3 m3d;
+//	m3d = m3a * m3c;
 //
-//	//works
-//	testMat.setRotateZ(PI);
 //
-//	//works
-//	float* testPtr = (float*)testMat;
 //
-//	//works
-//	Vector4 testVec = testMat[0];
 //
-//	//works
-//	testVec = testMat * testVec;
 //
-//	//works
-//	auto testMat2 = Matrix4();
 //
-//	//works
-//	testMat = testMat * testMat;
+//	//Matrix3(-0.981004655361f, 0.129707172513f, 0.14424264431f, 0.193984255195f, 0.655946731567f, 0.729454636574f, 0, 0.743579149246f, -0.668647944927f));
 //
-//	auto testMat3 = Matrix4(testVec, testVec, testVec, testVec);
+//
+//
+//
+//
 //}

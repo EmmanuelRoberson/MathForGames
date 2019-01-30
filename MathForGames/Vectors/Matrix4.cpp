@@ -13,8 +13,8 @@ Matrix4::Matrix4(
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			matrixData[i][j] = *iter;
-			identityMatrixData[i][j] = *iter++;
+			matrixData[j][i] = *iter;
+			identityMatrixData[j][i] = *iter++;
 		}
 	}
 }
@@ -63,7 +63,11 @@ void Matrix4::setRotateY(float radians)
 
 void Matrix4::setRotateZ(float radians)
 {
-	Matrix4 z_rotation_matrix = Matrix4(cos(radians), sin(radians), 0.0, 0.0, -sin(radians), cos(radians), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+	Matrix4 z_rotation_matrix = Matrix4(
+		cos(radians), sin(radians), 0.0, 0.0, 
+		-sin(radians), cos(radians), 0.0, 0.0, 
+		0.0, 0.0, 1.0, 0.0, 
+		0.0, 0.0, 0.0, 1.0);
 
 	for (int r = 0; r < 4; r++)
 	{
@@ -114,8 +118,8 @@ Matrix4::Matrix4()
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			matrixData[i][j] = 0.0;
-			identityMatrixData[i][j] = 0.0;
+			matrixData[j][i] = (i == j) ? 1.0f : 0.0f;
+			identityMatrixData[j][i] = (i == j) ? 1.0f : 0.0f;
 		}
 	}
 }
@@ -124,15 +128,18 @@ Matrix4 Matrix4::operator*(Matrix4 other)
 {
 	Matrix4 result;
 
-	for (int r = 0; r < 4; r++)
+	float value = 0.0f;
+
+	for (int i = 0; i < 4; i++)
 	{
-		for (int c = 0; c < 4; c++)
+		for (int j = 0; j < 4; j++)
 		{
-			result.matrixData[c][r] =
-				matrixData[0][r] * other.matrixData[c][0] +
-				matrixData[1][r] * other.matrixData[c][1] +
-				matrixData[2][r] * other.matrixData[c][2] +
-				matrixData[3][r] * other.matrixData[c][3];
+			for (int k = 0; k < 4; k++)
+			{
+				value += matrixData[i][k] * other.matrixData[k][j];
+			}
+			result.matrixData[i][j] = value;
+			value = 0.0f;
 		}
 	}
 
