@@ -1,6 +1,7 @@
 #include "Matrix4.h"
 #include "cmath"
 
+//works
 Matrix4::Matrix4()
 {
 	for (int i = 0; i < 4; i++)
@@ -13,6 +14,7 @@ Matrix4::Matrix4()
 	}
 }
 
+//works
 Matrix4::Matrix4(Vector4 x_vec, Vector4 y_vec, Vector4 z_vec, Vector4 w_vec)
 {
 	for (int i = 0; i < 4; i++)
@@ -40,6 +42,7 @@ Matrix4::Matrix4(Vector4 x_vec, Vector4 y_vec, Vector4 z_vec, Vector4 w_vec)
 	}
 }
 
+//works
 Matrix4::Matrix4(float xx, float xy, float xz, float xw, float yx, float yy, float yz, float yw, float zx, float zy, float zz, float zw, float wx, float wy, float wz, float ww)
 {
 	float* iter = &xx;
@@ -54,6 +57,7 @@ Matrix4::Matrix4(float xx, float xy, float xz, float xw, float yx, float yy, flo
 	}
 }
 
+//works
 Matrix4 Matrix4::operator*(Matrix4 other)
 {
 	Matrix4 result;
@@ -73,6 +77,7 @@ Matrix4 Matrix4::operator*(Matrix4 other)
 	return result;
 }
 
+//works
 Vector4 Matrix4::operator*(Vector4 vec)
 {
 	Vector4 result;
@@ -88,6 +93,7 @@ Vector4 Matrix4::operator*(Vector4 vec)
 	return result;
 }
 
+//works
 Vector4& Matrix4::operator[](int)
 {
 	Vector4 vec4 = Vector4( matrixData[0][0],
@@ -98,11 +104,13 @@ Vector4& Matrix4::operator[](int)
 	return vec4;
 }
 
+//works
 Matrix4::operator float*()
 {
 	return matrixData[0];
 }
 
+//works
 void Matrix4::setRotateX(float radians)
 {
 	Matrix4 x_rotation_matrix = Matrix4(1.0f, 0.0, 0.0, 0.0, 0.0, cos(radians), sin(radians), 0.0, 0.0, -sin(radians), cos(radians), 0.0, 0.0, 0.0, 0.0, 1.0);
@@ -120,6 +128,7 @@ void Matrix4::setRotateX(float radians)
 	}
 }
 
+//works
 void Matrix4::setRotateY(float radians)
 {
 	Matrix4 y_rotation_matrix = Matrix4(cos(radians), 0.0, -sin(radians), 0.0, 0.0, 1.0, 0.0, 0.0, sin(radians), 0.0, cos(radians), 0.0, 0.0, 0.0, 0.0, 1.0);
@@ -137,6 +146,7 @@ void Matrix4::setRotateY(float radians)
 	}
 }
 
+//works
 void Matrix4::setRotateZ(float radians)
 {
 	Matrix4 z_rotation_matrix = Matrix4(cos(radians), sin(radians), 0.0, 0.0, -sin(radians), cos(radians), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
