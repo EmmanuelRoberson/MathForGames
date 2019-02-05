@@ -93,11 +93,11 @@ Matrix3::operator float*()
 	return matrixData[0];
 }
 
-Vector3& Matrix3::operator[]( int) 
+Vector3& Matrix3::operator[](int index) 
 {
-	Vector3 vec3 = Vector3( matrixData[0][0],
-							matrixData[1][0],
-							matrixData[2][0]);
+	Vector3 vec3 = Vector3( matrixData[0][index],
+							matrixData[1][index],
+							matrixData[2][index]);
 
 	return vec3;
 }
